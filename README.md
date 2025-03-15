@@ -52,7 +52,7 @@ class HelloWorldApp extends App {
     render() {
         const appContent = this.container.querySelector(".appContent");
         appContent.innerHTML = `
-            <h1>Hello World!<h1>
+            <h1>Hello World!</h1>
             <h2>Your name is ${username}</h2>
         `;
     }
