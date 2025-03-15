@@ -106,3 +106,71 @@ And your app will be ready in the taskbar!
 When you open it:
 
 ![image](https://github.com/user-attachments/assets/2c12a665-8a40-42ed-944d-84b7879de2c4)
+
+Congratulations! You've built your first app!
+
+## Next Steps
+
+Now that you know how to make an app for TitanOS Nebula, let's look at more features that you can do.
+
+Let's start with sending notifications.
+
+Modify your render function, so that it looks like this:
+
+```javascript
+    render() {
+        const appContent = this.container.querySelector(".appContent");
+        appContent.innerHTML = `
+            <h1>Hello World!</h1>
+            <h2>Your name is ${username}</h2>
+            <button>Send me a notification!</button>
+        `;
+    }
+```
+
+What we're doing here is adding a button to send the user a notification.
+
+Now, we need to give it an onclick.
+
+```html
+<button onclick="appManager.apps.HelloWorldApp.buttonClick()">Send me a notification!</button>
+```
+
+Let's break this down:
+
+`appManager` - This references the app manager, which is what you also used to install your app. It manages all the apps.
+
+`appManager.apps` - This is a dictionary of all the apps that are installed.
+
+`appManager.apps.HelloWorldApp` - This references the current app. In code, you could use `this` instead.
+
+`appManager.apps.HelloWorldApp.buttonClick()` - This calls the buttonClick function inside your HelloWorldApp.
+
+Next, we need to define a function for the button click.
+
+```javascript
+    buttonClick() {
+        const title = "Hello!";
+        const description = `Hi, ${username}!`;
+        this.sendNotification(title, description);
+    }
+```
+
+What this does is:
+- Set the variable "title" to "Hello!"
+- Set the variable "description" to "Hi, username!" (with username being the current user's username)
+- Sends a notification with the title and description.
+
+Now, load the app into TitanOS again. You will need to reload the page, to get rid of the old one.
+
+Here's what the app should look like:
+![image](https://github.com/user-attachments/assets/94a4f5a8-4b2c-4317-b0ff-6dd5be855756)
+
+
+Here's the console output, when you click the button:
+![image](https://github.com/user-attachments/assets/86226432-f7e1-4cf2-879f-25ae47e341a1)
+
+And here's the notification being shown in the notifications section (bottom left):
+![image](https://github.com/user-attachments/assets/3f3f740a-f62b-4751-9c19-842f41ab4708)
+
+Congratulations! Now you know how to send notifications to the user!
